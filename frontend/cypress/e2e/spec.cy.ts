@@ -1,7 +1,18 @@
 describe('Todo Sida', () => {
-  it('Lägger till och tar bort todo', () => {
-    cy.visit('http://localhost:5173/')
+  beforeEach(() => { cy.visit('http://localhost:5173/') })
 
+  it('Kan inte lägga till samma todo två gånger', () => {
+    cy.get("input").type("Köpa kött")
+    cy.contains("Lägg Till").click()
+
+    cy.get("input").type("Köpa kött")
+    cy.contains("Lägg Till").click()
+    cy.on("window:alert", (text) => {
+      expect(text).to.contain("Todo finns redan!")
+    })
+  })
+
+  it('Lägger till och tar bort todo', () => {
     cy.get("input").type("Köpa mjölk")
     cy.contains("Lägg Till").click()
 

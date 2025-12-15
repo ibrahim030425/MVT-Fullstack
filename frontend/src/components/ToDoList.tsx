@@ -23,7 +23,17 @@ const TodoList: React.FC = () => {
 
 
     const addTodo = async () => {
-        if (!newTodo.trim()) return;
+         const text = newTodo.trim();
+    if (!text) return;
+
+    const alreadyExists = todos.some(
+        todo => todo.text.toLowerCase() === text.toLowerCase()
+    );
+
+    if (alreadyExists) {
+        alert("Todo finns redan!");
+        return;
+    }
         const res = await fetch("http://localhost:3000/todos", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
