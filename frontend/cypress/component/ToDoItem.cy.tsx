@@ -8,6 +8,7 @@ describe("ToDoItem", () => {
         text="handla"
         completed={false}
         toggleComplete={() => {}}
+        removeToDo={() => {}}
       />
     );
 

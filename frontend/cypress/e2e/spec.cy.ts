@@ -5,7 +5,7 @@ describe('Todo Sida', () => {
     cy.get("input").type("Köpa mjölk")
     cy.contains("Lägg Till").click()
 
-    cy.contains("Köpa mjölk").find("button").click()
+    cy.contains("Köpa mjölk").parent().find("button").click()
 
     cy.contains("Köpa mjölk").should("not.exist")
   })
