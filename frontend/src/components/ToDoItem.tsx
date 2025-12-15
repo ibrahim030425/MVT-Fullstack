@@ -2,11 +2,12 @@
 interface Props {
 	id: number
 	text: string
-	toogleComplete: (id: number) => void
+	completed : boolean
+	toggleComplete: (id: number) => void
 }
 
-export default function ToDoItem({ id, text }: Props) {
-	return <li>
-		<span onClick={() => toogleComplete(id)}>{text}</span>
+export default function ToDoItem({ id, text, completed, toggleComplete }: Props) {
+	return <li style={{ textDecoration: completed ? "line-through" : "none" }}>
+		<span onClick={() => toggleComplete(id)}>{text}</span>
 	</li>
 }

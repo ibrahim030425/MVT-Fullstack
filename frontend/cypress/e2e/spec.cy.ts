@@ -3,7 +3,7 @@ describe('Todo Sida', () => {
     cy.visit('http://localhost:5173/')
 
     cy.get("input").type("Köpa mjölk")
-    cy.contains("Lägg till").click()
+    cy.contains("Lägg Till").click()
 
     cy.contains("Köpa mjölk").find("button").click()
 
