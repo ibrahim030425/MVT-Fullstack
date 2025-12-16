@@ -58,9 +58,12 @@ const TodoList: React.FC = () => {
         setTodos(todos.filter(t => t.id !== id));
     };
 
+    const completedCount = todos.filter(t => t.completed).length;
+
     return (
         <div style={{ textAlign: "center" }}>
             <h1>Todo List</h1>
+            <p data-cy="completed-counter">{completedCount} av {todos.length} klara</p>
 
             <input
                 type="text"
